@@ -43,7 +43,7 @@ function draw() {
     
     drawBall(ctx)
     drawPad(ctx)
-    checkBallPad() //Aún no funciona bien xDD
+    checkBallPad()
     //drawBricks()
     moveBall()
     movePad()

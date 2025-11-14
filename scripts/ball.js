@@ -55,7 +55,7 @@ export function moveBall(){
     ballY += dirY
 }
 
-// Nueva función: detecta y maneja colisión con la pala (modifica estado interno)
+// Detectar y manejar colisión con la pala (modifica estado interno)
 export function handlePadCollision(padX, padY, padWidth){
     const nextX = ballX + dirX;
     const nextY = ballY + dirY;
