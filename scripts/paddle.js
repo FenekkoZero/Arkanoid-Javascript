@@ -1,11 +1,13 @@
 
 // **VARIABLES DE LA PALA**
 export const padHeight = 10;
-export const padWidth = 70;
+export const padWidth = 52;
 export let padX, padY, canvasRef;
 export let rightPressed = false;
 export let leftPressed = false;
 
+
+const $padSprite = document.querySelector('#padSprite');
 
 // Inicializar la pala
 export function initPad(canvas) {
@@ -17,9 +19,17 @@ export function initPad(canvas) {
 
 //Renderizar la pala
 export function drawPad(ctx){
-    ctx.fillStyle = '#fff'
-    ctx.fillRect(padX, padY, padWidth, padHeight)
-    ctx.closePath()
+    ctx.drawImage(
+        $padSprite, //ID del sprite
+        27, //Clip X
+        174, //ClipY
+        padWidth, //Ancho del recorte
+        padHeight, //Alto del recorte
+        padX,  //Posición X en el canvas
+        padY,  //Posición Y en el canvas
+        padWidth,  //Ancho del sprite
+        padHeight  //Alto del sprite
+    )
 }
 
 

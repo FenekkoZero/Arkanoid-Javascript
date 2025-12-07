@@ -19,6 +19,7 @@ canvas.width = 448;
 canvas.height = 512;
 
 
+
 //Inicializar objetos
 initBall(canvas);
 initPad(canvas);

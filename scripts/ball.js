@@ -1,6 +1,6 @@
 
 // **Variables de la pelota**
-export const ballRadius = 4;
+export const ballRadius = 3.5;
 export let ballX, ballY, dirX, dirY;
 let canvasRef
 
@@ -11,15 +11,15 @@ export function initBall(canvas) {
     canvasRef = canvas;
     ballX = canvasRef.width / 2;
     ballY = canvasRef.height - 75;
-    dirX = 3;
-    dirY = -3;
+    dirX = 4;
+    dirY = -4;
 }
 
 //Renderizar
 export function drawBall(ctx){
     ctx.beginPath()
     ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2)
-    ctx.fillStyle = '#fff'
+    ctx.fillStyle = '#ff3838ff'
     ctx.fill()
     ctx.closePath()
 }
@@ -76,3 +76,4 @@ export function handlePadCollision(padX, padY, padWidth){
         }
     }
 }
+
