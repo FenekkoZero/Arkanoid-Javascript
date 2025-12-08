@@ -1,0 +1,24 @@
+{
+  "brickWidth": 40,
+  "brickHeight": 20,
+  "padding": 5,
+  "offsetTop": 40,
+  "offsetLeft": 20,
+
+  "layout": [
+    [
+      { "type": "normal", "hits": 1 },
+      { "type": "duro", "hits": 3 },
+      null,
+      { "type": "indestructible" },
+      { "type": "normal", "hits": 1 }
+    ],
+    [
+      null,
+      { "type": "normal", "hits": 1 },
+      { "type": "duro", "hits": 2 },
+      null,
+      { "type": "indestructible" }
+    ]
+  ]
+}
