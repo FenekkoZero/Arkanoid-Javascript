@@ -46,16 +46,45 @@ export function drawBricks(ctx){
             if (currentBrick.status === BRICK_STATUS.DESTROYED)
                 continue;
 
-            ctx.fillStyle = 'yellow';
+            ctx.beginPath();
+            ctx.fillStyle = currentBrick.color || 'yellow';
             ctx.rect(
                 currentBrick.x,
                 currentBrick.y,
                 brickWidth,
                 brickHeight
-            )
-            ctx.fill()
+            );
+            ctx.fill();
+            ctx.closePath();
         }
     }
 
 
+}
+
+// Comprueba colisión de una pelota (en la posición proporcionada) con los ladrillos.
+// Si hay colisión, marca el ladrillo como destruido y devuelve true.
+export function handleBallCollision(ballX, ballY, ballRadius){
+    for (let c = 0; c < bricksColumnCount; c++){
+        for (let r = 0; r < bricksRowCount; r++){
+            const b = bricks[c][r];
+            if (!b || b.status === BRICK_STATUS.DESTROYED) continue;
+
+            // Caja del ladrillo
+            const bx = b.x;
+            const by = b.y;
+            const bw = brickWidth;
+            const bh = brickHeight;
+
+            // Simple colisión AABB contra el círculo (aprox con bounding box)
+            if (ballX + ballRadius > bx && ballX - ballRadius < bx + bw &&
+                ballY + ballRadius > by && ballY - ballRadius < by + bh){
+                // Colisión detectada: destruir ladrillo
+                b.status = BRICK_STATUS.DESTROYED;
+                return true;
+            }
+        }
+    }
+
+    return false;
 }

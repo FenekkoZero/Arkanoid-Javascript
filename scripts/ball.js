@@ -55,6 +55,11 @@ export function moveBall(){
     ballY += dirY
 }
 
+// Invierte la componente vertical de la velocidad (útil cuando se detecta una colisión externa)
+export function invertDirY(){
+    dirY = -dirY;
+}
+
 // Detectar y manejar colisión con la pala (modifica estado interno)
 export function handlePadCollision(padX, padY, padWidth){
     const nextX = ballX + dirX;

@@ -1,11 +1,12 @@
 //**IMPORTACIONES**
 
 //Funciones
-import { initBall, drawBall, moveBall, handlePadCollision } from '../scripts/ball.js';
+import { initBall, drawBall, moveBall, handlePadCollision, ballX, ballY, dirX, dirY, ballRadius, invertDirY } from '../scripts/ball.js';
 import { initControls, initPad, drawPad, movePad } from './paddle.js';
 
 //Variables
 import { padX, padY, padHeight, padWidth } from './paddle.js';
+import { drawBricks, handleBallCollision } from './bricks.js';
 
 
 
@@ -30,6 +31,20 @@ function checkBallPad(){
     handlePadCollision(padX, padY, padWidth)
 }
 
+// Comprobar colisiones: pala + ladrillos
+function checkCollisions(){
+    // Colisión con la pala (la función interna ya ajusta dirX/dirY en ball.js)
+    handlePadCollision(padX, padY, padWidth);
+
+    // Colisión con ladrillos (comprobamos la posición siguiente)
+    const nextX = ballX + dirX;
+    const nextY = ballY + dirY;
+    if (handleBallCollision(nextX, nextY, ballRadius)){
+        // Invertir la componente vertical al chocar con un ladrillo
+        invertDirY();
+    }
+}
+
 
 //Limpiar la pantalla antes de renderizar
 function cleanCanvas(){
@@ -41,11 +56,10 @@ function draw() {
     cleanCanvas();
 
     //Dibujar elementos del gameplay
-    
+    drawBricks(ctx)
     drawBall(ctx)
     drawPad(ctx)
-    checkBallPad()
-    //drawBricks()
+    checkCollisions()
     moveBall()
     movePad()
     
