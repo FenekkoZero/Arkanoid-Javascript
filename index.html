@@ -4,5 +4,63 @@
     <link rel="stylesheet" type="text/css" href="./styles/index.css" />
 </header>
 <body>
-    <a href="./stages/stg1/stg1.html"><button>Play</button></a>
+    <img src="./assets/Arkanoid-logo.svg" class="titlelogo">
+    
+    <div class="titleButtons">
+        <a href="./stages/stg1/stg1.html"><button class="titleBttn">Play</button></a>
+        <button class="titleBttn" id="optionsButton">Options</button>
+    </div>
+
+
+    <!--MODAL DEL MENÚ DE OPCIONES-->
+    
+    <!-- Fondo oscuro -->
+<div id="optionsOverlay" class="overlay hidden">
+    <!-- Ventana -->
+    <div class="modal">
+        <button id="closeOptions" class="close-btn">✕</button>
+
+        <h2>Opciones</h2>
+
+    <!-- Aquí van tus opciones -->
+        <label>
+            <input type="checkbox" id="soundToggle">
+            Music
+        </label>
+        <label>
+            <input type="checkbox" id="touchToggle">
+            Touch Controls
+        </label>
+    </div>
+</div>
+
+
+<!--SCRIPT PARA MOSTRAR Y OCULTAR EL MENÚ-->
+
+<script>
+  // Espera a que el HTML esté completamente cargado
+  document.addEventListener("DOMContentLoaded", () => {
+    const optionsButton = document.getElementById("optionsButton");
+    const optionsOverlay = document.getElementById("optionsOverlay");
+    const closeOptions = document.getElementById("closeOptions");
+
+    // Abrir menú de opciones
+    optionsButton.addEventListener("click", () => {
+      optionsOverlay.classList.remove("hidden");
+    });
+
+    // Cerrar menú con la X
+    closeOptions.addEventListener("click", () => {
+      optionsOverlay.classList.add("hidden");
+    });
+
+    // Cerrar menú al hacer click fuera de la ventana
+    optionsOverlay.addEventListener("click", (event) => {
+      if (event.target === optionsOverlay) {
+        optionsOverlay.classList.add("hidden");
+      }
+    });
+  });
+</script>
+
 </body>

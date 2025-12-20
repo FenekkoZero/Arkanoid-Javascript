@@ -1,11 +1,75 @@
-body{
-    background-color: rgb(52, 60, 136);
+.titlelogo{
+    display: block;
+    margin: 0 auto;
+    width: 400px;
+    padding-top: 50px;
 }
 
-canvas{
-    border: 4px solid #ffff;
-    border-bottom: transparent;
+.titleButtons{
+    display: grid;
+    grid-template-columns: repeat(1fr, 1fr);
+    text-align: center;
+    margin-top: 6vh;
+}
+
+.titleBttn{
+    margin: 2% auto;
+    width: 18vh;
+    height: 8vh;
+}
+
+body{
     background: url('../assets/bg.png');
-    margin: 0 auto;
-    display: block;
+}
+
+
+
+
+/* MODAL DE MENÚ */
+
+.hidden {
+  display: none;
+}
+
+/* Fondo oscuro */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.575);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Ensure that when both classes are present the overlay is hidden.
+   This overrides the .overlay display:flex rule so .hidden works. */
+.overlay.hidden {
+  display: none;
+}
+
+/* Ventana del menú */
+.modal {
+  position: relative;
+  background: #121125ec;
+  color: white;
+  padding: 20px;
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
+
+/* Botón X */
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
 }
